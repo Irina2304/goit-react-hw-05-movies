@@ -78,9 +78,11 @@ import { useState, useEffect } from 'react';
 
 import { Layout } from '../components/Layout';
 import { Route, Routes } from 'react-router-dom';
-import HomePage from '../Pages/HomePage';
-import MoviesPage from '../Pages/MoviesPage';
+import HomePage from 'Pages/HomePage';
+import MoviesPage from 'Pages/MoviesPage';
 import MoviesDetailsPage from 'Pages/MovieDetailsPage';
+import { Cast } from './Cast/Cast';
+import { Reviews } from './Reviews/Reviews';
 import Notiflix from 'notiflix';
 
 // Notiflix.Notify.success('Sol lucet omnibus');
@@ -96,8 +98,11 @@ export const App = () => {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
-        <Route path="/movies" element={<MoviesPage />} />
-        <Route path="/movies/:movieId" element={<MoviesDetailsPage />} />
+        <Route path="movies" element={<MoviesPage />} />
+        <Route path="movies/:movieId" element={<MoviesDetailsPage />}>
+          <Route path="movies/:movieId/cast" element={<Cast />} />
+          <Route path="movies/:movieId/reviews" element={<Reviews />} />
+        </Route>
       </Route>
     </Routes>
   );

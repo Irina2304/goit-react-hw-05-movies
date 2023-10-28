@@ -1,28 +1,26 @@
 import { fetchId } from '../api';
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { MoviesDetails } from '../components/MoviesDetails/MoviesDetails';
 
 export default function MoviesDetailsPage() {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [id, setId] = useState('');
-  const [details, setDetails] = useState(false);
+  // const [id, setId] = useState('');
+  const [details, setDetails] = useState();
 
-  const getId = () => {
-    const savedId = localStorage.getItem('id');
-    if (savedId !== null) {
-      setId(JSON.parse(savedId));
-    }
-  };
+  const params = useParams();
+  // console.log(params.movieId);
 
   useEffect(() => {
     // if (id === '') {
     //   return;
     // }
-    fetchId(id)
+    fetchId(params.movieId)
       .then(data => {
         // const { results } = data;
-        console.log(data);
+        // console.log(data);
 
         // if (results.length === 0) {
         //   // noImagesFound();
@@ -38,7 +36,12 @@ export default function MoviesDetailsPage() {
       .finally(() => {
         setLoading(false);
       });
-  }, [id]);
+  }, [params.movieId]);
 
-  return <div>{details && <MoviesDetails results={details} />}</div>;
+  return (
+    <div>
+      {details && <MoviesDetails results={details} />}
+      <Outlet />
+    </div>
+  );
 }
