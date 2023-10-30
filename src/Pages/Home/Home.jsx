@@ -25,11 +25,8 @@ export default function Home() {
 
       .finally(() => {
         setLoading(false);
-        console.log(loading);
       });
   }, [list]);
-
-  console.log(loading);
 
   return (
     <section>
