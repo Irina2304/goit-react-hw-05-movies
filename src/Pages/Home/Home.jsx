@@ -6,13 +6,13 @@ import ErrorMessage from 'components/ErrorMessage/ErrorMessage';
 import MoviesList from 'components/MoviesList/MoviesList';
 
 export default function Home() {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [list, setList] = useState([]);
   const [error, setError] = useState(false);
 
   useEffect(() => {
     setError(false);
-    setLoading(true);
+
     if (list.length > 0) {
       return;
     }
@@ -26,10 +26,11 @@ export default function Home() {
 
       .finally(() => {
         setLoading(false);
+        console.log(loading);
       });
   }, [list]);
 
-  console.log(list);
+  console.log(loading);
 
   return (
     <section>
