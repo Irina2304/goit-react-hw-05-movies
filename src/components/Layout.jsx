@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Navigation } from './Novigation';
 import { Outlet } from 'react-router-dom';
+import { Suspense } from 'react';
 
 export const Container = styled.div`
   display: flex;
@@ -10,12 +11,18 @@ export const Container = styled.div`
 
 export const Layout = () => {
   return (
-    <Container>
+    <>
       <header>
+        <h1>The Movies</h1>
         <Navigation />
       </header>
-
-      <Outlet />
-    </Container>
+      <main>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Outlet />
+        </Suspense>
+      </main>
+    </>
   );
 };
+
+// import { Header, MainTitle, Nav, NavLinkStyle } from './Layout.styled';
