@@ -27,7 +27,7 @@ export default function Home() {
       .finally(() => {
         setLoading(false);
       });
-  }, []);
+  }, [list]);
 
   console.log(list);
 
