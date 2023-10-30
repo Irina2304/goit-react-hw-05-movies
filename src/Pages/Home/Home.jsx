@@ -2,7 +2,6 @@ import { Loader } from '../../components/Loader/Loader';
 import { useEffect, useState } from 'react';
 import { fetchAll } from 'api/api';
 import ErrorMessage from 'components/ErrorMessage/ErrorMessage';
-// import { SectionMain } from './Home.styled';
 import MoviesList from 'components/MoviesList/MoviesList';
 
 export default function Home() {
