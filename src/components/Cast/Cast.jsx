@@ -1,12 +1,11 @@
 import { Loader } from 'components/Loader/Loader';
-// import { List, Item } from 'components/MoviesList/MoviesList.styled';
+import { List, Item } from './Cast.styled';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchCredits } from 'api/api';
 import ErrorMessage from 'components/ErrorMessage/ErrorMessage';
 
 export default function Cast() {
-  //   const { movieId } = useParams();
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [cast, setCast] = useState([]);
@@ -38,9 +37,9 @@ export default function Cast() {
         <ErrorMessage title="Whoops! Error! Please reload this page!" />
       )}
       {cast.length !== 0 ? (
-        <ul>
+        <List>
           {cast.map(({ id, name, character, profile_path }) => (
-            <li key={id}>
+            <Item key={id}>
               <b>{name}</b>
               <p>Character: {character}</p>
               <img
@@ -53,9 +52,9 @@ export default function Cast() {
                 width="100"
                 height="150"
               />
-            </li>
+            </Item>
           ))}
-        </ul>
+        </List>
       ) : (
         <p>Sorry! We don't have any information about cast</p>
       )}

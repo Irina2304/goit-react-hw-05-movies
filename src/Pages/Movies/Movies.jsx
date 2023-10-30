@@ -4,7 +4,6 @@ import ErrorMessage from 'components/ErrorMessage/ErrorMessage';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { fetchWord } from 'api/api';
-// import { SectionMain } from './Movies.styled';
 import MoviesList from 'components/MoviesList/MoviesList';
 import { Searchbar } from '../../components/Searchbar/Searchbar';
 
@@ -12,7 +11,9 @@ export default function Movies() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [list, setList] = useState([]);
+
   const [searchParams, setSearchParams] = useSearchParams();
+
   const searchQuery = searchParams.get('query') ?? '';
 
   useEffect(() => {

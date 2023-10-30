@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { fetchAll } from 'api/api';
 import ErrorMessage from 'components/ErrorMessage/ErrorMessage';
 import MoviesList from 'components/MoviesList/MoviesList';
+import { PageName, SectionHome } from './Home.styled';
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -29,13 +30,13 @@ export default function Home() {
   }, [list]);
 
   return (
-    <section>
-      <h2>Trending today</h2>
+    <SectionHome>
+      <PageName>Trending today:</PageName>
       {loading && <Loader />}
       {error && (
         <ErrorMessage title="Whoops! Error! Please reload this page!" />
       )}
       <MoviesList list={list} />
-    </section>
+    </SectionHome>
   );
 }

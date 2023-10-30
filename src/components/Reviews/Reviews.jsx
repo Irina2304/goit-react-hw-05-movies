@@ -3,10 +3,8 @@ import { useParams } from 'react-router-dom';
 import { fetchReviews } from 'api/api';
 import { Loader } from '../Loader/Loader';
 import ErrorMessage from 'components/ErrorMessage/ErrorMessage';
-// import { ListReview, ItemReview } from './Reviews.styled';
 
 export default function Reviews() {
-  // const { movieId } = useParams();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [reviews, setReviews] = useState([]);

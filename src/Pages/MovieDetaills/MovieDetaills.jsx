@@ -3,13 +3,7 @@ import ErrorMessage from 'components/ErrorMessage/ErrorMessage';
 import { Suspense, useEffect, useRef, useState } from 'react';
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { fetchId } from 'api/api';
-// import {
-//   SectionMain,
-//   GoBackLink,
-//   Wrapper,
-//   Card,
-//   AddList,
-// } from './MovieDetails.styled';
+import { Section, Back, Wrap, Title, List } from './MovieDetaills.styled';
 
 export default function MovieDetails() {
   const [loading, setLoading] = useState(false);
@@ -42,6 +36,7 @@ export default function MovieDetails() {
   if (!details) {
     return;
   }
+
   const {
     poster_path,
     title,
@@ -53,16 +48,19 @@ export default function MovieDetails() {
   } = details;
 
   return (
-    <section>
-      <Link to={backLinkRef.current}>{'<- GO BACK'}</Link>
-      <h2>Movie Details:</h2>
+    <Section>
+      <Back>
+        <Link to={backLinkRef.current}>{'GO BACK'}</Link>
+      </Back>
+
+      <Title>Movie Details:</Title>
       {loading && <Loader />}
       {error && (
         <ErrorMessage title="Whoops! Error! Please reload this page!" />
       )}
       {details && (
         <>
-          <div>
+          <Wrap>
             <img
               src={
                 poster_path
@@ -82,27 +80,27 @@ export default function MovieDetails() {
                 {genres.map(({ name }) => `${name.toLowerCase()} | `)}
               </p>
               <p>
-                <b>Ranking:</b> {vote_average}
+                <b>Rating:</b> {vote_average}
               </p>
               <p>
                 <b>Overview:</b> {overview}
               </p>
             </div>
-          </div>
+          </Wrap>
           <h3>Additional information:</h3>
-          <ul>
+          <List>
             <li>
               <Link to="cast">Cast</Link>
             </li>
             <li>
               <Link to="reviews">Reviews</Link>
             </li>
-          </ul>
+          </List>
           <Suspense fallback={<div>Loading...</div>}>
             <Outlet />
           </Suspense>
         </>
       )}
-    </section>
+    </Section>
   );
 }

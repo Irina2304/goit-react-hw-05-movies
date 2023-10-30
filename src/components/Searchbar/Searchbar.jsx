@@ -1,18 +1,13 @@
-// import {
-//   SearchBar,
-//   SearchForm,
-//   SearchFormButton,
-//   SearchFormInput,
-// } from './Search.styled';
+import { Form, Btn, Input } from './Searchbar.styled';
 
 export const Searchbar = ({ onSubmitSearchBar, value }) => (
-  <header>
-    <form onSubmit={onSubmitSearchBar}>
-      <button>
+  <div>
+    <Form onSubmit={onSubmitSearchBar}>
+      <Btn>
         <span>Search</span>
-      </button>
+      </Btn>
 
-      <input
+      <Input
         type="text"
         name="search"
         autoComplete="off"
@@ -20,6 +15,6 @@ export const Searchbar = ({ onSubmitSearchBar, value }) => (
         defaultValue={value}
         placeholder="Search movies"
       />
-    </form>
-  </header>
+    </Form>
+  </div>
 );
