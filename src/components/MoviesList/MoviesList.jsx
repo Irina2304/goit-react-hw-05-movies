@@ -13,8 +13,8 @@ export default function MoviesList({ list }) {
               <img
                 src={
                   poster_path
-                    ? `http://image.tmdb.org/t/p/w154${poster_path}`
-                    : 'http://placehold.it/154x231&text=no_image'
+                    ? `https://image.tmdb.org/t/p/w154${poster_path}`
+                    : 'https://placehold.it/154x231&text=no_image'
                 }
                 alt={title || name}
                 width="154"
