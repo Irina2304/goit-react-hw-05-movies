@@ -45,8 +45,8 @@ export default function Cast() {
               <img
                 src={
                   profile_path
-                    ? `http://image.tmdb.org/t/p/w185${profile_path}`
-                    : 'http://placehold.it/100x150&text=no_image'
+                    ? `https://image.tmdb.org/t/p/w185${profile_path}`
+                    : 'https://placehold.it/100x150&text=no_image'
                 }
                 alt={name}
                 width="100"
