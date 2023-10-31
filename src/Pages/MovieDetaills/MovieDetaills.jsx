@@ -64,8 +64,8 @@ export default function MovieDetails() {
             <img
               src={
                 poster_path
-                  ? `http://image.tmdb.org/t/p/w342${poster_path}`
-                  : 'http://placehold.it/200x300&text=no_image'
+                  ? `https://image.tmdb.org/t/p/w342${poster_path}`
+                  : 'https://placehold.it/200x300&text=no_image'
               }
               alt={title}
               width="200"

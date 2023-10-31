@@ -4,9 +4,9 @@ export const Searchbar = ({ onSubmitSearchBar, value }) => {
   const onSubmit = evt => {
     evt.preventDefault();
     const searchValue = evt.currentTarget.elements.search.value;
-    // if (searchValue === '') {
-    //   return Notiflix.Notify.warning('Please enter search word');
-    // }
+    if (searchValue === '') {
+      return Notiflix.Notify.warning('Please enter search word');
+    }
     onSubmitSearchBar(searchValue);
   };
 

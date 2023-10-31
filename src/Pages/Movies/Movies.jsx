@@ -38,10 +38,10 @@ export default function Movies() {
   }, [searchQuery]);
 
   const onSubmitSearchBar = searchValue => {
-    if (searchValue === '') {
-      setSearchParams({});
-      return Notiflix.Notify.warning('Please enter search word');
-    }
+    // if (searchValue === '') {
+    //   setSearchParams({});
+    //   return Notiflix.Notify.warning('Please enter search word');
+    // }
     setSearchParams({ query: searchValue });
   };
 
