@@ -1,5 +1,4 @@
 import { Form, Btn, Input } from './Searchbar.styled';
-import Notiflix from 'notiflix';
 
 export const Searchbar = ({ onSubmitSearchBar, value }) => {
   const onSubmit = evt => {
