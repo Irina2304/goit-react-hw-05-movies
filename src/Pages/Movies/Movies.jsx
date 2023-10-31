@@ -1,11 +1,11 @@
 import { Loader } from '../../components/Loader/Loader';
 import ErrorMessage from 'components/ErrorMessage/ErrorMessage';
-
-import { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import { fetchWord } from 'api/api';
 import MoviesList from 'components/MoviesList/MoviesList';
 import { Searchbar } from '../../components/Searchbar/Searchbar';
+
+import { fetchWord } from 'api/api';
+import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 export default function Movies() {
   const [loading, setLoading] = useState(false);
@@ -18,9 +18,6 @@ export default function Movies() {
 
   useEffect(() => {
     if (searchQuery === '') {
-      return;
-    }
-    if (list.length > 0) {
       return;
     }
 
@@ -37,21 +34,10 @@ export default function Movies() {
       .finally(() => {
         setLoading(false);
       });
-  }, [list, searchQuery]);
+  }, [searchQuery]);
 
-  const onSubmitSearchBar = evt => {
-    evt.preventDefault();
-    const form = evt.currentTarget;
-    const searchValue = form.search.value;
-
-    if (searchValue === '') {
-      setSearchParams({});
-      setList([]);
-      return;
-    }
-
+  const onSubmitSearchBar = searchValue => {
     setSearchParams({ query: searchValue });
-    setList([]);
   };
 
   return (
@@ -62,7 +48,7 @@ export default function Movies() {
         {error && (
           <ErrorMessage title="Whoops! Error! Please reload this page!" />
         )}
-        <MoviesList list={list} />
+        {list.length > 0 && <MoviesList list={list} />}
       </section>
     </div>
   );

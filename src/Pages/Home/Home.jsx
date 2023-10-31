@@ -13,9 +13,6 @@ export default function Home() {
   useEffect(() => {
     setError(false);
 
-    if (list.length > 0) {
-      return;
-    }
     fetchAll()
       .then(data => {
         setList(data.results);
@@ -27,7 +24,7 @@ export default function Home() {
       .finally(() => {
         setLoading(false);
       });
-  }, [list]);
+  }, []);
 
   return (
     <SectionHome>
