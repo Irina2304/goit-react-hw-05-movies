@@ -2,7 +2,7 @@ import { Loader } from '../../components/Loader/Loader';
 import ErrorMessage from 'components/ErrorMessage/ErrorMessage';
 import MoviesList from 'components/MoviesList/MoviesList';
 import { Searchbar } from '../../components/Searchbar/Searchbar';
-// import Notiflix from 'notiflix';
+import Notiflix from 'notiflix';
 
 import { fetchWord } from 'api/api';
 import { useEffect, useState } from 'react';
@@ -38,10 +38,10 @@ export default function Movies() {
   }, [searchQuery]);
 
   const onSubmitSearchBar = searchValue => {
-    // if (searchValue === '') {
-    //   setSearchParams({});
-    //   return Notiflix.Notify.warning('Please enter search word');
-    // }
+    if (searchValue === '') {
+      setSearchParams({});
+      return Notiflix.Notify.warning('Please enter search word');
+    }
     setSearchParams({ query: searchValue });
   };
 

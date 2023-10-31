@@ -1,13 +1,9 @@
 import { Form, Btn, Input } from './Searchbar.styled';
-import Notiflix from 'notiflix';
 
 export const Searchbar = ({ onSubmitSearchBar, value }) => {
   const onSubmit = evt => {
     evt.preventDefault();
     const searchValue = evt.currentTarget.elements.search.value;
-    if (searchValue === '') {
-      return Notiflix.Notify.warning('Please enter search word');
-    }
     onSubmitSearchBar(searchValue);
   };
 
